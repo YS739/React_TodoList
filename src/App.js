@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-function ToDoList(props) {
+function WorkList(props) {
   return (
     <div className="card">
       <div>{props.toDo.title}</div>
@@ -20,6 +20,30 @@ function ToDoList(props) {
         }}
       >
         완료
+      </button>
+    </div>
+  );
+}
+
+function DoneList(props) {
+  return (
+    <div className="card">
+      <div>{props.toDo.title}</div>
+      <div>{props.toDo.body}</div>
+      <button
+        onClick={() => {
+          props.handleDelete(props.toDo.id);
+        }}
+      >
+        삭제하기
+      </button>
+      <button
+        className="complete-btn"
+        onClick={() => {
+          props.handleDone((props.toDo.isDone = false));
+        }}
+      >
+        취소
       </button>
     </div>
   );
@@ -58,7 +82,8 @@ const App = () => {
   };
 
   const onChangeStateHandler = (isDone) => {
-    const doneToDoList = toDos.filter((toDo) => toDo.isDone == true);
+    const doneToDoList = toDos.filter((toDo) => toDo.isDone === true);
+    setToDos(doneToDoList);
   };
 
   return (
@@ -89,12 +114,12 @@ const App = () => {
         <div className="to-do-cards">
           {toDos.map((toDo) => {
             return (
-              <ToDoList
+              <WorkList
                 handleDelete={onChangeHandler}
                 handleDone={onChangeStateHandler}
                 toDo={toDo}
-                key={(toDo.id, (toDo.isDone = false))}
-              ></ToDoList>
+                key={(toDo.id, toDo.isDone)}
+              ></WorkList>
             );
           })}
         </div>
@@ -102,12 +127,12 @@ const App = () => {
         <div className="to-do-cards">
           {toDos.map((toDo) => {
             return (
-              <ToDoList
+              <DoneList
                 handleDelete={onChangeHandler}
                 handleDone={onChangeStateHandler}
                 toDo={toDo}
-                key={(toDo.id, (toDo.isDone = true))}
-              ></ToDoList>
+                key={(toDo.id, toDo.isDone)}
+              ></DoneList>
             );
           })}
         </div>
