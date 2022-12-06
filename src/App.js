@@ -1,21 +1,18 @@
-// src/App.js
-import React from "react";
+import React, { useState } from "react";
 
-function Child({ grandmaName }) {
-  return <div>{grandmaName}</div>;
-}
+const App = () => {
+  const [value, setValue] = useState("");
+  const onChangeHandler = (event) => {
+    const inputValue = event.target.value;
+    setValue(inputValue);
+  };
+  console.log(value);
 
-function Mother(props) {
-  return <Child grandmaName={props.grandmaName} />;
-}
-
-function Grandma() {
-  const name = "황사장";
-  return <Mother grandmaName={name} />;
-}
-
-function App() {
-  return <Grandma />;
-}
+  return (
+    <div>
+      <input type="text" onChange={onChangeHandler} value={value} />
+    </div>
+  );
+};
 
 export default App;
