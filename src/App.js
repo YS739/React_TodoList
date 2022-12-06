@@ -13,9 +13,14 @@ function ToDoList(props) {
       >
         삭제하기
       </button>
-      {/* <button onClick={()=>{
-        props.
-      }}>완료</button> */}
+      <button
+        className="complete-btn"
+        onClick={() => {
+          props.handleDone((props.toDo.isDone = true));
+        }}
+      >
+        완료
+      </button>
     </div>
   );
 }
@@ -52,6 +57,10 @@ const App = () => {
     setToDos(newToDoList);
   };
 
+  const onChangeStateHandler = (isDone) => {
+    const doneToDoList = toDos.filter((toDo) => toDo.isDone == true);
+  };
+
   return (
     <div>
       <div className="header">
@@ -59,31 +68,50 @@ const App = () => {
         <p>React</p>
       </div>
       <div className="add-todo-box">
-        <input
-          value={title}
-          placeholder="제목을 입력해주세요"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          value={body}
-          placeholder="내용을 입력해주세요"
-          onChange={(e) => setBody(e.target.value)}
-        />
+        <div className="input-group">
+          <span>제목</span>
+          <input
+            value={title}
+            placeholder="제목을 입력해주세요"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <span>내용</span>
+          <input
+            value={body}
+            placeholder="내용을 입력해주세요"
+            onChange={(e) => setBody(e.target.value)}
+          />
+        </div>
         <button onClick={onSubmitHandler}>작성하기</button>
       </div>
-      <div>Working</div>
-      <div className="to-do-cards">
-        {toDos.map((toDo) => {
-          return (
-            <ToDoList
-              handleDelete={onChangeHandler}
-              toDo={toDo}
-              key={(toDo.id, toDo.isDone)}
-            ></ToDoList>
-          );
-        })}
+      <div>
+        <div>Working</div>
+        <div className="to-do-cards">
+          {toDos.map((toDo) => {
+            return (
+              <ToDoList
+                handleDelete={onChangeHandler}
+                handleDone={onChangeStateHandler}
+                toDo={toDo}
+                key={(toDo.id, (toDo.isDone = false))}
+              ></ToDoList>
+            );
+          })}
+        </div>
+        <div>Done!</div>
+        <div className="to-do-cards">
+          {toDos.map((toDo) => {
+            return (
+              <ToDoList
+                handleDelete={onChangeHandler}
+                handleDone={onChangeStateHandler}
+                toDo={toDo}
+                key={(toDo.id, (toDo.isDone = true))}
+              ></ToDoList>
+            );
+          })}
+        </div>
       </div>
-      <div>Done!</div>
     </div>
   );
 };
