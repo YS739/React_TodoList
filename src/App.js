@@ -13,6 +13,9 @@ function ToDoList(props) {
       >
         삭제하기
       </button>
+      {/* <button onClick={()=>{
+        props.
+      }}>완료</button> */}
     </div>
   );
 }
@@ -75,7 +78,7 @@ const App = () => {
             <ToDoList
               handleDelete={onChangeHandler}
               toDo={toDo}
-              key={toDo.id}
+              key={(toDo.id, toDo.isDone)}
             ></ToDoList>
           );
         })}
