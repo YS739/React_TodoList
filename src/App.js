@@ -1,18 +1,13 @@
 import React, { useState } from "react";
+import "./App.css";
 
-const App = () => {
-  const [value, setValue] = useState("");
-  const onChangeHandler = (event) => {
-    const inputValue = event.target.value;
-    setValue(inputValue);
-  };
-  console.log(value);
-
+const Header = () => {
   return (
-    <div>
-      <input type="text" onChange={onChangeHandler} value={value} />
+    <div className="header">
+      <span>My To Do List</span>
+      <span>React</span>
     </div>
   );
 };
 
-export default App;
+export default Header;
