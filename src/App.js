@@ -72,6 +72,7 @@ const App = () => {
       id: toDos.length + 1,
       title: title,
       body: body,
+      isDone: false,
     };
     setToDos([...toDos, newToDo]);
   };
