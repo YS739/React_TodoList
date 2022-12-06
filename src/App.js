@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import Header from "./components/header";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <span>My To Do List</span>
-      <span>React</span>
-    </div>
-  );
+const addToDo = () => {
+  return <div></div>;
 };
 
-export default Header;
+export default addToDo;
