@@ -1,11 +1,14 @@
 .header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  margin: 20px;
-  position: relative;
+  justify-content: center;
+  margin: 0 auto;
+
+  font-size: 1.8rem;
+  background-color: #e1bee7;
 }
+
+/* 작성하기 */
 
 .add-todo-box {
   width: 95%;
@@ -17,10 +20,10 @@
   flex-direction: row;
   align-items: center;
 
-  background-color: olivedrab;
-  border-radius: 12px;
-  justify-content: space-between;
-  margin: 0 auto;
+  border: 2px solid #e1bee7;
+  border-radius: 20px;
+  justify-content: space-around;
+  margin: 20px auto;
   padding: 30px;
 }
 
@@ -30,6 +33,19 @@
   gap: 20px;
 }
 
+.input-group span {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.submit-btn {
+  background-color: transparent;
+  border: 2px solid #e1bee7;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+/* 리스트 */
 .to-do-cards {
   width: 100%;
   gap: 20px;
@@ -48,5 +64,22 @@
   justify-content: center;
   align-items: center;
 
-  border: 2px solid green;
+  border: 2px solid #e1bee7;
+  border-radius: 20px;
+}
+
+.todo-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.todo-body {
+  font-weight: bold;
+}
+
+.list-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px;
 }

@@ -2,31 +2,33 @@ import React, { useState } from "react";
 import "./App.css";
 
 function ToDoList(props) {
-  const setBtn = (toDo) => {
-    if ((toDo.isDone = false)) {
-      return { ...toDo, isDone: true };
-    } else {
-      return { ...toDo, isDone: false };
-    }
-  };
+  // const setBtn = (toDo) => {
+  //   if ((toDo.isDone = false)) {
+  //     return { ...toDo, isDone: true };
+  //   } else {
+  //     return { ...toDo, isDone: false };
+  //   }
+  // };
   return (
     <div className="card">
-      <div>{props.toDo.title}</div>
-      <div>{props.toDo.body}</div>
-      <button
-        onClick={() => {
-          props.handleDelete(props.toDo.id);
-        }}
-      >
-        삭제하기
-      </button>
-      <button
-        onClick={() => {
-          setBtn(props.toDo.isDone);
-        }}
-      >
-        {props.toDo.isDone ? "취소" : "완료"}
-      </button>
+      <div className="todo-title">{props.toDo.title}</div>
+      <div className="todo-body">{props.toDo.body}</div>
+      <div className="list-btn">
+        <button
+          onClick={() => {
+            props.handleDelete(props.toDo.id);
+          }}
+        >
+          삭제하기
+        </button>
+        <button
+          onClick={() => {
+            props.handleList(props.toDo.id);
+          }}
+        >
+          {props.toDo.isDone ? "취소" : "완료"}
+        </button>
+      </div>
     </div>
   );
 }
@@ -64,16 +66,24 @@ const App = () => {
     setToDos(newToDoList);
   };
 
+  const onChangeList = (isDone) => {
+    if ((isDone = false)) {
+      return { isDone: true };
+    } else {
+      return { isDone: false };
+    }
+  };
+
   return (
     <div>
       <div className="header">
         <p>My To Do List</p>
-        <p>React</p>
       </div>
       <div className="add-todo-box">
         <div className="input-group">
           <span>제목</span>
           <input
+            className="input"
             value={title}
             placeholder="제목을 입력해주세요"
             onChange={(e) => setTitle(e.target.value)}
@@ -85,7 +95,9 @@ const App = () => {
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-        <button onClick={onSubmitHandler}>작성하기</button>
+        <button className="submit-btn" onClick={onSubmitHandler}>
+          작성하기
+        </button>
       </div>
       <div>
         <div>Working</div>
@@ -95,8 +107,9 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
+                  handleList={onChangeList}
                   toDo={toDo}
-                  key={toDo.id}
+                  key={(toDo.id, toDo.isDone)}
                 ></ToDoList>
               );
             } else {
@@ -111,8 +124,9 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
+                  handleList={onChangeList}
                   toDo={toDo}
-                  key={toDo.id}
+                  key={(toDo.id, toDo.isDone)}
                 ></ToDoList>
               );
             } else {
