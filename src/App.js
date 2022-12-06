@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import "./App.css";
 
+function CustomButton(props) {
+  const { color, onClick, children } = props;
+  if (color) {
+    return (
+      <button
+        style={{ backgroundColor: color, color: "black" }}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  }
+}
+
 function ToDoList(props) {
   // const setBtn = (toDo) => {
   //   if ((toDo.isDone = false)) {
@@ -14,20 +28,22 @@ function ToDoList(props) {
       <div className="todo-title">{props.toDo.title}</div>
       <div className="todo-body">{props.toDo.body}</div>
       <div className="list-btn">
-        <button
+        <CustomButton
+          color="#fdf0ff"
           onClick={() => {
             props.handleDelete(props.toDo.id);
           }}
         >
           삭제하기
-        </button>
-        <button
-        // onClick={() => {
-        //   props.handleList(props.toDo.isDone);
-        // }}
+        </CustomButton>
+        <CustomButton
+          color="#fdf0ff"
+          // onClick={() => {
+          //   props.handleList(props.toDo.isDone);
+          // }}
         >
           {props.toDo.isDone ? "취소" : "완료"}
-        </button>
+        </CustomButton>
       </div>
     </div>
   );
@@ -39,14 +55,14 @@ const App = () => {
     {
       id: 1,
       title: "리액트",
-      body: "리액트 입문 과제 제출하기",
-      isDone: false,
+      body: "리액트 입문 과제 제출",
+      isDone: true,
     },
     {
       id: 2,
       title: "독서",
       body: "IT 책 10장 읽기",
-      isDone: true,
+      isDone: false,
     },
   ]);
   const [title, setTitle] = useState("");
@@ -78,17 +94,17 @@ const App = () => {
   return (
     <div>
       <div className="header">
-        <p>My To Do List</p>
+        <h1>My To Do List</h1>
       </div>
       <div className="add-todo-box">
         <div className="input-group">
-          <span>제목</span>
+          <h3>제목</h3>
           <input
             className="input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <span>내용</span>
+          <h3>내용</h3>
           <input
             className="input"
             value={body}
@@ -100,7 +116,7 @@ const App = () => {
         </button>
       </div>
       <div className="list-container">
-        <div>Working</div>
+        <h2>Working..🔥🔥🔥</h2>
         <div className="to-do-cards">
           {toDos.map((toDo) => {
             if (toDo.isDone === false) {
@@ -109,7 +125,7 @@ const App = () => {
                   handleDelete={onChangeHandler}
                   // handleList={onChangeList}
                   toDo={toDo}
-                  key={(toDo.id, toDo.isDone)}
+                  key={toDo.id}
                 ></ToDoList>
               );
             } else {
@@ -117,7 +133,7 @@ const App = () => {
             }
           })}
         </div>
-        <div>Done!</div>
+        <h2>Done!🎉🎉🎉</h2>
         <div className="to-do-cards">
           {toDos.map((toDo) => {
             if (toDo.isDone === true) {
@@ -126,7 +142,7 @@ const App = () => {
                   handleDelete={onChangeHandler}
                   // handleList={onChangeList}
                   toDo={toDo}
-                  key={(toDo.id, toDo.isDone)}
+                  key={toDo.id}
                 ></ToDoList>
               );
             } else {
