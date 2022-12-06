@@ -38,7 +38,7 @@ const App = () => {
       id: 2,
       title: "독서",
       body: "IT 책 10장 읽기",
-      isDone: false,
+      isDone: true,
     },
   ]);
   const [title, setTitle] = useState("");
@@ -58,6 +58,34 @@ const App = () => {
     const newToDoList = toDos.filter((toDo) => toDo.id !== id);
     setToDos(newToDoList);
   };
+
+  const workingList = toDos
+    .filter((todo) => {
+      return todo.isDone === false;
+    })
+    .map((toDo) => {
+      return (
+        <ToDoList
+          handleDelete={onChangeHandler}
+          toDo={toDo}
+          key={(toDo.id, toDo.isDone)}
+        ></ToDoList>
+      );
+    });
+
+  const doneList = toDos
+    .filter((todo) => {
+      return todo.isDone === true;
+    })
+    .map((toDo) => {
+      return (
+        <ToDoList
+          handleDelete={onChangeHandler}
+          toDo={toDo}
+          key={(toDo.id, toDo.isDone)}
+        ></ToDoList>
+      );
+    });
 
   return (
     <div>
@@ -84,18 +112,9 @@ const App = () => {
       </div>
       <div>
         <div>Working</div>
-        <div className="to-do-cards">
-          {toDos.map((toDo) => {
-            return (
-              <ToDoList
-                handleDelete={onChangeHandler}
-                toDo={toDo}
-                key={(toDo.id, toDo.isDone)}
-              ></ToDoList>
-            );
-          })}
-        </div>
+        <div className="to-do-cards">{workingList}</div>
         <div>Done!</div>
+        <div className="to-do-cards">{doneList}</div>
       </div>
     </div>
   );
