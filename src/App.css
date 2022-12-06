@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px;
+<<<<<<< HEAD
   position: relative;
 }
 
@@ -49,4 +50,6 @@
   align-items: center;
 
   border: 2px solid green;
+=======
+>>>>>>> parent of 79d9338 (done except split isdone true or false)
 }
