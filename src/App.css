@@ -1,4 +1,5 @@
 .header {
+  width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,8 +12,7 @@
 /* 작성하기 */
 
 .add-todo-box {
-  width: 95%;
-  max-width: 1200px;
+  width: 1200px;
   height: 80px;
   margin: 100px auto;
 
@@ -38,22 +38,37 @@
   font-weight: bold;
 }
 
+.input {
+  border: 1px solid #e1bee7;
+  border-radius: 15px;
+  padding: 10px;
+}
+
 .submit-btn {
   background-color: transparent;
   border: 2px solid #e1bee7;
   border-radius: 30px;
   padding: 10px;
+  cursor: pointer;
+
+  font-weight: bold;
 }
 
 /* 리스트 */
+.list-container {
+  width: 1200px;
+}
+
 .to-do-cards {
   width: 100%;
   gap: 20px;
 
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+
+  margin: 20px;
 }
 
 .card {
@@ -73,13 +88,21 @@
   font-weight: bold;
 }
 
-.todo-body {
-  font-weight: bold;
-}
+/* .todo-body {
+  font-weight:
+} */
 
 .list-btn {
   display: flex;
   flex-direction: row;
   gap: 10px;
   margin: 10px;
+}
+
+.list-btn button {
+  background-color: transparent;
+  border: 2px solid #e1bee7;
+  border-radius: 15px;
+  padding: 5px;
+  font-weight: bold;
 }

@@ -22,9 +22,9 @@ function ToDoList(props) {
           삭제하기
         </button>
         <button
-          onClick={() => {
-            props.handleList(props.toDo.id);
-          }}
+        // onClick={() => {
+        //   props.handleList(props.toDo.isDone);
+        // }}
         >
           {props.toDo.isDone ? "취소" : "완료"}
         </button>
@@ -35,6 +35,7 @@ function ToDoList(props) {
 
 const App = () => {
   const [toDos, setToDos] = useState([
+    // { id: 0, title: "", body: "", isDone: false },
     {
       id: 1,
       title: "리액트",
@@ -66,13 +67,13 @@ const App = () => {
     setToDos(newToDoList);
   };
 
-  const onChangeList = (isDone) => {
-    if ((isDone = false)) {
-      return { isDone: true };
-    } else {
-      return { isDone: false };
-    }
-  };
+  // const onChangeList = (isDone) => {
+  //   if ((isDone = false)) {
+  //     return { isDone: true };
+  //   } else {
+  //     return { isDone: false };
+  //   }
+  // };
 
   return (
     <div>
@@ -85,13 +86,12 @@ const App = () => {
           <input
             className="input"
             value={title}
-            placeholder="제목을 입력해주세요"
             onChange={(e) => setTitle(e.target.value)}
           />
           <span>내용</span>
           <input
+            className="input"
             value={body}
-            placeholder="내용을 입력해주세요"
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
@@ -99,7 +99,7 @@ const App = () => {
           작성하기
         </button>
       </div>
-      <div>
+      <div className="list-container">
         <div>Working</div>
         <div className="to-do-cards">
           {toDos.map((toDo) => {
@@ -107,7 +107,7 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
-                  handleList={onChangeList}
+                  // handleList={onChangeList}
                   toDo={toDo}
                   key={(toDo.id, toDo.isDone)}
                 ></ToDoList>
@@ -124,7 +124,7 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
-                  handleList={onChangeList}
+                  // handleList={onChangeList}
                   toDo={toDo}
                   key={(toDo.id, toDo.isDone)}
                 ></ToDoList>
