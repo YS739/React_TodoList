@@ -1,6 +1,29 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// function CheckButton(props) {
+//   if ((props.toDo.isDone = true)) {
+//     return (
+//       <button
+//         className="complete-btn"
+//         onClick={() => {
+//           props.handleDone((props.toDo.isDone = false));
+//         }}
+//       >
+//         취소
+//       </button>
+//     );
+//   }
+//   <button
+//     className="complete-btn"
+//     onClick={() => {
+//       props.handleDone((props.toDo.isDone = true));
+//     }}
+//   >
+//     완료
+//   </button>;
+// }
+
 function WorkList(props) {
   return (
     <div className="card">
@@ -13,6 +36,7 @@ function WorkList(props) {
       >
         삭제하기
       </button>
+
       <button
         className="complete-btn"
         onClick={() => {
@@ -78,8 +102,8 @@ const App = () => {
   };
 
   const onChangeHandler = (id) => {
-    const newToDoList = toDos.filter((toDo) => toDo.id !== id);
-    setToDos(newToDoList);
+    const newWorkList = toDos.filter((toDo) => toDo.id !== id);
+    setToDos(newWorkList);
   };
 
   const onChangeStateHandler = (isDone) => {
@@ -119,7 +143,7 @@ const App = () => {
                 handleDelete={onChangeHandler}
                 handleDone={onChangeStateHandler}
                 toDo={toDo}
-                key={(toDo.id, toDo.isDone)}
+                key={(toDo.id, (toDo.isDone = false))}
               ></WorkList>
             );
           })}
@@ -132,7 +156,7 @@ const App = () => {
                 handleDelete={onChangeHandler}
                 handleDone={onChangeStateHandler}
                 toDo={toDo}
-                key={(toDo.id, toDo.isDone)}
+                key={(toDo.id, (toDo.isDone = true))}
               ></DoneList>
             );
           })}
