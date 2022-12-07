@@ -1,19 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-
-function CustomButton(props) {
-  const { color, onClick, children } = props;
-  if (color) {
-    return (
-      <button
-        style={{ backgroundColor: color, color: "black" }}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    );
-  }
-}
+import CustomButton from "./components/CustomButton";
 
 function ToDoList(props) {
   // const setBtn = (toDos) => {
@@ -56,7 +43,7 @@ const App = () => {
       id: 1,
       title: "리액트",
       body: "리액트 입문 과제 제출",
-      isDone: false,
+      isDone: true,
     },
     {
       id: 2,
@@ -84,17 +71,22 @@ const App = () => {
   };
 
   const onChangeList = (id) => {
-    toDos.map((toDo) => {
-      if (toDo.isDone === false) {
-        return setToDos([...toDos, (toDos.isDone = true)]);
-      } else {
-        return setToDos([...toDos, (toDos.isDone = false)]);
-      }
-    });
+    console.log(toDos[0].isDone, toDos[1].isDone);
+    toDos.filter((toDo) => (toDo.isDone = false))
+      ? setToDos([...toDos, (toDos.isDone = false)])
+      : setToDos([...toDos, (toDos.isDone = true)]);
+    console.log(toDos[0].isDone, toDos[1].isDone);
   };
-  // toDos.map((id) => (id.isDone = true))
-  //   ? setToDos([...toDos, (toDos.isDone = false)])
-  //   : setToDos([...toDos, (toDos.isDone = true)]);
+
+  // const onChangeList = (id) => {
+  //   toDos.map((toDo) => {
+  //     if (toDo.isDone === false) {
+  //       return setToDos([...toDos, (toDos.isDone = true)]);
+  //     } else {
+  //       return setToDos([...toDos, (toDos.isDone = false)]);
+  //     }
+  //   });
+  // };
 
   return (
     <div>
