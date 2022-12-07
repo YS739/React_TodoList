@@ -3,13 +3,6 @@ import "./App.css";
 import CustomButton from "./components/CustomButton";
 
 function ToDoList(props) {
-  // const setBtn = (toDos) => {
-  //   if ((toDos.isDone === false)) {
-  //     return { ...toDos, isDone: true };
-  //   } else {
-  //     return { ...toDos, isDone: false };
-  //   }
-  // };
   return (
     <div className="card">
       <div className="todo-title">{props.toDo.title}</div>
@@ -35,6 +28,14 @@ function ToDoList(props) {
     </div>
   );
 }
+
+// const setBtn = (toDos) => {
+//   if ((toDos.isDone === false)) {
+//     return { ...toDos, isDone: true };
+//   } else {
+//     return { ...toDos, isDone: false };
+//   }
+// };
 
 const App = () => {
   const [toDos, setToDos] = useState([
@@ -72,16 +73,17 @@ const App = () => {
 
   const onChangeList = (id) => {
     console.log(id);
-
-    console.log(toDos[0].isDone, toDos[1].isDone);
-    toDos.map((toDo) => {
-      return toDo.isDone === false
-        ? setToDos([...toDos, (toDos.isDone = true)])
-        : setToDos([...toDos, (toDos.isDone = false)]);
-    });
-    console.log(toDos[0].isDone, toDos[1].isDone);
+    return id === false
+      ? [...toDos, (toDos.isDone = true)]
+      : [...toDos, (toDos.isDone = false)];
   };
 
+  // toDos.map((toDo) => {
+  //   return toDo.isDone === false
+  //     ? setToDos([...toDos, (toDos.isDone = true)])
+  //     : setToDos([...toDos, (toDos.isDone = false)]);
+  // });
+  // console.log(toDos[0].isDone, toDos[1].isDone);
   // const onChangeList = (id) => {
   //   toDos.map((toDo) => {
   //     if (toDo.isDone === false) {
