@@ -17,7 +17,7 @@ function CustomButton(props) {
 
 function ToDoList(props) {
   // const setBtn = (toDos) => {
-  //   if ((toDos.isDone = false)) {
+  //   if ((toDos.isDone === false)) {
   //     return { ...toDos, isDone: true };
   //   } else {
   //     return { ...toDos, isDone: false };
