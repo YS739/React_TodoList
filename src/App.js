@@ -16,11 +16,11 @@ function CustomButton(props) {
 }
 
 function ToDoList(props) {
-  // const setBtn = (toDo) => {
-  //   if ((toDo.isDone = false)) {
-  //     return { ...toDo, isDone: true };
+  // const setBtn = (toDos) => {
+  //   if ((toDos.isDone = false)) {
+  //     return { ...toDos, isDone: true };
   //   } else {
-  //     return { ...toDo, isDone: false };
+  //     return { ...toDos, isDone: false };
   //   }
   // };
   return (
@@ -37,7 +37,7 @@ function ToDoList(props) {
           삭제하기
         </CustomButton>
         <CustomButton
-          color="#fdf0ff"
+          color="white"
           onClick={() => {
             props.handleList(props.toDo.isDone);
           }}
@@ -83,12 +83,9 @@ const App = () => {
     setToDos(newToDoList);
   };
 
-  const onChangeList = (toDo) => {
-    if ((toDo.isDone = false)) {
-      return { ...toDos, isDone: true };
-    } else {
-      return { ...toDos, isDone: false };
-    }
+  const onChangeList = (id) => {
+    toDos.filter((toDo) => (toDo.isDone = true));
+    setToDos([...toDos, (toDos.isDone = false)]);
   };
 
   return (
@@ -96,6 +93,8 @@ const App = () => {
       <div className="header">
         <h1>My To Do List</h1>
       </div>
+      <h3 className="react">React</h3>
+
       <div className="add-todo-box">
         <div className="input-group">
           <h3>제목</h3>
