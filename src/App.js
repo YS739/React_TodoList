@@ -38,9 +38,9 @@ function ToDoList(props) {
         </CustomButton>
         <CustomButton
           color="#fdf0ff"
-          // onClick={() => {
-          //   props.handleList(props.toDo.isDone);
-          // }}
+          onClick={() => {
+            props.handleList(props.toDo.isDone);
+          }}
         >
           {props.toDo.isDone ? "취소" : "완료"}
         </CustomButton>
@@ -83,13 +83,13 @@ const App = () => {
     setToDos(newToDoList);
   };
 
-  // const onChangeList = (isDone) => {
-  //   if ((isDone = false)) {
-  //     return { isDone: true };
-  //   } else {
-  //     return { isDone: false };
-  //   }
-  // };
+  const onChangeList = (toDo) => {
+    if ((toDo.isDone = false)) {
+      return { ...toDos, isDone: true };
+    } else {
+      return { ...toDos, isDone: false };
+    }
+  };
 
   return (
     <div>
@@ -123,7 +123,7 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
-                  // handleList={onChangeList}
+                  handleList={onChangeList}
                   toDo={toDo}
                   key={toDo.id}
                 ></ToDoList>
@@ -140,7 +140,7 @@ const App = () => {
               return (
                 <ToDoList
                   handleDelete={onChangeHandler}
-                  // handleList={onChangeList}
+                  handleList={onChangeList}
                   toDo={toDo}
                   key={toDo.id}
                 ></ToDoList>
