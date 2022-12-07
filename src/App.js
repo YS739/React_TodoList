@@ -9,7 +9,7 @@ function ToDoList(props) {
       <div className="todo-body">{props.toDo.body}</div>
       <div className="list-btn">
         <CustomButton
-          color="#fdf0ff"
+          color="white"
           onClick={() => {
             props.handleDelete(props.toDo.id);
           }}
@@ -17,7 +17,7 @@ function ToDoList(props) {
           삭제하기
         </CustomButton>
         <CustomButton
-          color="white"
+          color="#f9d9ff"
           onClick={() => {
             props.handleList(props.toDo.isDone);
           }}
