@@ -71,10 +71,14 @@ const App = () => {
   };
 
   const onChangeList = (id) => {
+    console.log(id);
+
     console.log(toDos[0].isDone, toDos[1].isDone);
-    toDos.map((toDo) => (toDo.isDone = false))
-      ? setToDos([...toDos, (toDos.isDone = true)])
-      : setToDos([...toDos, (toDos.isDone = false)]);
+    toDos.map((toDo) => {
+      return toDo.isDone === false
+        ? setToDos([...toDos, (toDos.isDone = true)])
+        : setToDos([...toDos, (toDos.isDone = false)]);
+    });
     console.log(toDos[0].isDone, toDos[1].isDone);
   };
 
