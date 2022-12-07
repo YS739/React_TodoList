@@ -41,15 +41,15 @@ const App = () => {
     // { id: 0, title: "", body: "", isDone: false },
     {
       id: 1,
-      title: "리액트",
-      body: "리액트 입문 과제 제출",
-      isDone: true,
-    },
-    {
-      id: 2,
       title: "독서",
       body: "IT 책 10장 읽기",
       isDone: false,
+    },
+    {
+      id: 2,
+      title: "리액트",
+      body: "리액트 입문 과제 제출",
+      isDone: true,
     },
   ]);
   const [title, setTitle] = useState("");
@@ -72,9 +72,9 @@ const App = () => {
 
   const onChangeList = (id) => {
     console.log(toDos[0].isDone, toDos[1].isDone);
-    toDos.filter((toDo) => (toDo.isDone = false))
-      ? setToDos([...toDos, (toDos.isDone = false)])
-      : setToDos([...toDos, (toDos.isDone = true)]);
+    toDos.map((toDo) => (toDo.isDone = false))
+      ? setToDos([...toDos, (toDos.isDone = true)])
+      : setToDos([...toDos, (toDos.isDone = false)]);
     console.log(toDos[0].isDone, toDos[1].isDone);
   };
 
