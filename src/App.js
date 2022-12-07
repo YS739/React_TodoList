@@ -1,33 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import CustomButton from "./components/CustomButton";
-
-function ToDoList(props) {
-  return (
-    <div className="card">
-      <div className="todo-title">{props.toDo.title}</div>
-      <div className="todo-body">{props.toDo.body}</div>
-      <div className="list-btn">
-        <CustomButton
-          color="white"
-          onClick={() => {
-            props.handleDelete(props.toDo.id);
-          }}
-        >
-          삭제하기
-        </CustomButton>
-        <CustomButton
-          color="#f9d9ff"
-          onClick={() => {
-            props.handleList(props.toDo.isDone);
-          }}
-        >
-          {props.toDo.isDone ? "취소" : "완료"}
-        </CustomButton>
-      </div>
-    </div>
-  );
-}
+import Header from "./components/header/Header";
+import ToDoList from "./components/list/List";
 
 // const setBtn = (toDos) => {
 //   if ((toDos.isDone === false)) {
@@ -83,6 +57,7 @@ const App = () => {
   //     ? setToDos([...toDos, (toDos.isDone = true)])
   //     : setToDos([...toDos, (toDos.isDone = false)]);
   // });
+
   // console.log(toDos[0].isDone, toDos[1].isDone);
   // const onChangeList = (id) => {
   //   toDos.map((toDo) => {
@@ -96,10 +71,12 @@ const App = () => {
 
   return (
     <div>
-      <div className="header">
+      <Header></Header>
+
+      {/* <div className="header">
         <h1>My To Do List</h1>
       </div>
-      <h3 className="react">React</h3>
+      <h3 className="react">React</h3> */}
 
       <div className="add-todo-box">
         <div className="input-group">
