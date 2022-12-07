@@ -56,7 +56,7 @@ const App = () => {
       id: 1,
       title: "리액트",
       body: "리액트 입문 과제 제출",
-      isDone: true,
+      isDone: false,
     },
     {
       id: 2,
@@ -84,9 +84,17 @@ const App = () => {
   };
 
   const onChangeList = (id) => {
-    toDos.filter((toDo) => (toDo.isDone = true));
-    setToDos([...toDos, (toDos.isDone = false)]);
+    toDos.map((toDo) => {
+      if (toDo.isDone === false) {
+        return setToDos([...toDos, (toDos.isDone = true)]);
+      } else {
+        return setToDos([...toDos, (toDos.isDone = false)]);
+      }
+    });
   };
+  // toDos.map((id) => (id.isDone = true))
+  //   ? setToDos([...toDos, (toDos.isDone = false)])
+  //   : setToDos([...toDos, (toDos.isDone = true)]);
 
   return (
     <div>
