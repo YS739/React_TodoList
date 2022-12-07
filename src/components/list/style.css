@@ -1,5 +1,6 @@
 .list-container {
-  width: 1200px;
+  max-width: 1200px;
+  min-width: 800px;
   margin-left: 20px;
 }
 

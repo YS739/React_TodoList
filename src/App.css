@@ -1,8 +1,8 @@
 /* 작성하기 */
 
 .add-todo-box {
-  width: 95%;
   max-width: 1200px;
+  min-width: 800px;
   height: 80px;
 
   display: flex;
